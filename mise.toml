@@ -5,3 +5,20 @@
 "github:JohnnyMorganz/luau-lsp" = "1.68.0"
 "github:Kampfkarren/selene" = "0.31.0"
 "npm:@changesets/cli" = "2.31.0"
+
+[tasks."lute:setup"]
+hide = true
+run = "lute setup"
+dir = ".lute"
+
+[tasks."lint:setup"]
+description = "Runs required setup for linting to work"
+depends = ["lute:setup"]
+
+[tasks."setup"]
+description = "Runs initial setup, recommended to run after cloning"
+depends = ["lint:setup"]
+
+[tasks."sync_package_version"]
+hide = true
+run = "lute run sync_package_version"
