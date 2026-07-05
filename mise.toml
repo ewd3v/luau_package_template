@@ -4,7 +4,7 @@ cargo-binstall = "latest"
 "github:luau-lang/lute" = "1.0.0"
 "github:JohnnyMorganz/StyLua" = "2.5.2"
 "github:JohnnyMorganz/luau-lsp" = "1.68.0"
-"cargo:selene" = "0.31.0"
+"cargo:selene" = "0.31.0"                  # Github linux build is missing +x permission
 "npm:@changesets/cli" = "2.31.0"
 
 [vars]
