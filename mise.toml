@@ -6,6 +6,10 @@
 "github:Kampfkarren/selene" = "0.31.0"
 "npm:@changesets/cli" = "2.31.0"
 
+[vars]
+lint_paths = "src tests scripts"
+format_paths = "src tests scripts"
+
 [tasks."sync_package_version"]
 hide = true
 run = "lute run scripts/sync_package_version"
@@ -26,6 +30,24 @@ run = "lute setup"
 [tasks."lint:setup"]
 description = "Runs required setup for linting to work"
 depends = ["lute:setup"]
+
+[tasks."lint:luau-lsp"]
+hide = true
+depends = ["lint:setup"]
+run = "luau-lsp analyze --settings=.vscode/settings.json --ignore **/.lute/typedefs** {{vars.lint_paths}}"
+
+[tasks."lint:lute"]
+hide = true
+depends = ["lint:setup"]
+run = "lute lint {{vars.lint_paths}}"
+
+[tasks."lint:selene"]
+hide = true
+run = "selene --no-summary {{vars.lint_paths}}"
+
+[tasks."lint"]
+description = "Lints the codebase with different linters"
+depends = ["lint:luau-lsp", "lint:lute", "lint:selene"]
 
 [tasks."setup"]
 description = "Runs initial setup, recommended to run after cloning"
