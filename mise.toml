@@ -9,7 +9,6 @@ cargo-binstall = "latest"
 
 [vars]
 lint_paths = "src tests scripts"
-format_paths = "src tests scripts"
 
 [tasks."sync_package_version"]
 hide = true
@@ -50,9 +49,13 @@ run = "lute lint {{vars.lint_paths}}"
 hide = true
 run = "selene --no-summary {{vars.lint_paths}}"
 
+[tasks."lint:stylua"]
+hide = true
+run = "stylua --check --respect-ignores {{vars.lint_paths}}"
+
 [tasks."lint"]
 description = "Lints the codebase with different linters"
-depends = ["lint:luau-lsp", "lint:lute", "lint:selene"]
+depends = ["lint:luau-lsp", "lint:lute", "lint:selene", "lint:stylua"]
 
 [tasks."test"]
 description = "Runs tests with Lute"
