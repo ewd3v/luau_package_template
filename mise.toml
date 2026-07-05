@@ -17,7 +17,7 @@ run = "lute run scripts/sync_package_version"
 
 [tasks."changesets:publish"]
 description = "Runs changesets publish workflow"
-run = "changeset git-tag"
+run = "changeset tag"
 
 [tasks."changesets:version"]
 description = "Runs changesets version and syncs package versions"
