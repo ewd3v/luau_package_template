@@ -6,6 +6,9 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+env:
+  MISE_ENV: "ci"
+
 jobs:
   release:
     name: Release
