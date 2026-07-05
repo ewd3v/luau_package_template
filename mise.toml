@@ -24,6 +24,10 @@ description = "Runs changesets version and syncs package versions"
 run = "changeset version"
 depends_post = ["sync_package_version"]
 
+[tasks."setup"]
+description = "Runs initial setup, recommended to run after cloning"
+depends = ["lint:setup"]
+
 [tasks."lute:setup"]
 hide = true
 run = "lute setup"
@@ -49,10 +53,6 @@ run = "selene --no-summary {{vars.lint_paths}}"
 [tasks."lint"]
 description = "Lints the codebase with different linters"
 depends = ["lint:luau-lsp", "lint:lute", "lint:selene"]
-
-[tasks."setup"]
-description = "Runs initial setup, recommended to run after cloning"
-depends = ["lint:setup"]
 
 [tasks."test"]
 description = "Runs tests with Lute"
