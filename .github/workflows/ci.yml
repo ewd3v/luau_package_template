@@ -28,7 +28,7 @@ jobs:
 
       - name: Fix binary permissions (selene)
         shell: bash
-        run: chmod +x ${mise which selene}
+        run: chmod +x $(mise which selene)
       
       - name: Run linting tasks
         run: mise run --jobs 1 --continue-on-error lint
