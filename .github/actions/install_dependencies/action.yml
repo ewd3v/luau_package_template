@@ -12,4 +12,5 @@ runs:
         restore-keys: ${{ runner.os }}-pesde-
 
     - name: Install dependencies
+      shell: sh
       run: mise --env ci run --force install_dependencies
