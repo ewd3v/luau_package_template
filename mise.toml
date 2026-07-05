@@ -21,3 +21,7 @@ depends = ["lint:setup"]
 [tasks."sync_package_version"]
 hide = true
 run = "lute run scripts/sync_package_version"
+
+[tasks."test"]
+description = "Runs tests with Lute"
+run = "lute test"
