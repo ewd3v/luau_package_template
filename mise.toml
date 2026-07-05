@@ -6,6 +6,19 @@
 "github:Kampfkarren/selene" = "0.31.0"
 "npm:@changesets/cli" = "2.31.0"
 
+[tasks."sync_package_version"]
+hide = true
+run = "lute run scripts/sync_package_version"
+
+[tasks."changesets:publish"]
+description = "Runs changesets publish workflow"
+run = "changeset git-tag"
+
+[tasks."changesets:version"]
+description = "Runs changesets version and syncs package versions"
+run = "changeset version"
+depends_post = ["sync_package_version"]
+
 [tasks."lute:setup"]
 hide = true
 run = "lute setup"
@@ -17,10 +30,6 @@ depends = ["lute:setup"]
 [tasks."setup"]
 description = "Runs initial setup, recommended to run after cloning"
 depends = ["lint:setup"]
-
-[tasks."sync_package_version"]
-hide = true
-run = "lute run scripts/sync_package_version"
 
 [tasks."test"]
 description = "Runs tests with Lute"
