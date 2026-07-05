@@ -9,7 +9,6 @@
 [tasks."lute:setup"]
 hide = true
 run = "lute setup"
-dir = ".lute"
 
 [tasks."lint:setup"]
 description = "Runs required setup for linting to work"
@@ -21,4 +20,4 @@ depends = ["lint:setup"]
 
 [tasks."sync_package_version"]
 hide = true
-run = "lute run sync_package_version"
+run = "lute run scripts/sync_package_version"
