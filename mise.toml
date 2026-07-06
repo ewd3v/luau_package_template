@@ -10,6 +10,12 @@ cargo-binstall = "latest"
 [vars]
 lint_paths = "src tests scripts"
 
+[tasks."scaffold"]
+description = "Scaffolds a new project"
+interactive = true
+run = "lute run scripts/scaffold.luau"
+depends_post = ["sync_package_version"]
+
 [tasks."sync_package_version"]
 hide = true
 run = "lute run scripts/sync_package_version"
