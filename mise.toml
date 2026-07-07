@@ -72,11 +72,11 @@ raw_args = true
 run = "stylua --check --respect-ignores {{vars.lint_paths}}"
 
 [tasks."lint"]
-description = "Lints the codebase with different linters"
+description = "Lints the codebase"
 depends = ["lint:luau-lsp", "lint:lute", "lint:selene", "lint:stylua"]
 
 [tasks."test"]
-description = "Runs tests with Lute"
+description = "Runs tests against the codebase"
 raw_args = true
 run = "lute test"
 
