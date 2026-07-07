@@ -79,7 +79,7 @@ depends = ["lint:luau-lsp", "lint:lute", "lint:selene", "lint:stylua"]
 hide = true
 depends = ["lute:setup"]
 raw_args = true
-ruin = "lute test"
+run = "lute test"
 
 [tasks."test"]
 description = "Runs tests against the codebase"
