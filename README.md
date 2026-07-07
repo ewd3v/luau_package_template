@@ -5,7 +5,7 @@ A project template for [Luau](https://luau.org/) packages
 
 First clone this template, either by using the ["Use this template" button on GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template), or by cloning it manually ([zip](https://github.com/ewd3v/luau_package_template/archive/refs/heads/main.zip)).
 
-Open the repository in your favorite IDE, [VSCode](https://code.visualstudio.com/) is recommended (or anything based on it like [VSCodium](https://vscodium.com/)) as this template already contains workspace settings and [recommended extensions](/.vscode/extensions.json) for a good workflow.
+Open the repository in your favorite IDE, [VSCode](https://code.visualstudio.com/) is recommended (or anything based on it like [VSCodium](https://vscodium.com/)) as this template already contains [workspace settings](/.vscode/settings.json) and [recommended extensions](/.vscode/extensions.json) for a good workflow.
 
 [Install and setup mise](https://mise.jdx.dev/getting-started.html). Mise is the tool this template uses to manage tooling required for running workflow tasks.
 
