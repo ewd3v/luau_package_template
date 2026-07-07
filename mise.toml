@@ -14,15 +14,15 @@ lint_paths = "src tests scripts"
 description = "Scaffolds a new project"
 interactive = true
 run = "lute run scripts/scaffold.luau"
-depends_post = ["sync_package_version"]
+depends_post = ["package:sync_version"]
 
 [tasks."package:install"]
 description = "Installs package dependencies"
-depends = ["pesde:install"]
+run = { task = "pesde:install" }
 
 [tasks."package:update_lockfile"]
 description = "Updates package lockfiles"
-depends = ["pesde:update"]
+run = { task = "pesde:update" }
 
 [tasks."package:sync_version"]
 hide = true
