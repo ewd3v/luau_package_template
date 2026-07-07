@@ -1,4 +1,4 @@
-name: Install dependencies
+name: Install package
 
 runs:
   using: composite
@@ -13,4 +13,4 @@ runs:
 
     - name: Install dependencies
       shell: sh
-      run: mise --env ci run --force install_dependencies
+      run: mise --env ci run --force package_install
