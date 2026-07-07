@@ -40,10 +40,6 @@ raw_args = true
 run = "changeset version"
 depends_post = ["package:sync_version"]
 
-[tasks."setup"]
-description = "Runs initial setup, recommended to run after cloning"
-depends = ["lint:setup"]
-
 [tasks."lute:setup"]
 hide = true
 raw_args = true
