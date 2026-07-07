@@ -13,4 +13,4 @@ runs:
 
     - name: Install dependencies
       shell: sh
-      run: mise --env ci run --force package_install
+      run: mise --env ci run --force package:install

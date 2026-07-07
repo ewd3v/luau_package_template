@@ -16,18 +16,18 @@ interactive = true
 run = "lute run scripts/scaffold.luau"
 depends_post = ["sync_package_version"]
 
-[tasks."package_install"]
+[tasks."package:install"]
 description = "Installs package dependencies"
 depends = ["pesde:install"]
 
-[tasks."package_update_lockfile"]
-description = "Updates the package lockfile"
+[tasks."package:update_lockfile"]
+description = "Updates package lockfiles"
 depends = ["pesde:update"]
 
-[tasks."sync_package_version"]
+[tasks."package:sync_version"]
 hide = true
 run = "lute run scripts/sync_package_version"
-depends_post = ["package_update_lockfile"]
+depends_post = ["package:update_lockfile"]
 
 [tasks."changesets:publish"]
 description = "Runs changesets publish workflow"
@@ -38,7 +38,7 @@ run = "changeset publish"
 description = "Runs changesets version and syncs package versions"
 raw_args = true
 run = "changeset version"
-depends_post = ["sync_package_version"]
+depends_post = ["package:sync_version"]
 
 [tasks."setup"]
 description = "Runs initial setup, recommended to run after cloning"
