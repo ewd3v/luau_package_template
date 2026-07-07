@@ -16,11 +16,27 @@ then
 	return
 end
 
-pcall(fs.removeDirectory, ".changeset", { recursive = true })
-process.run({ "changeset", "init" }, { stdio = "inherit" })
+do -- changeset
+	local configPath = ".changeset/config.json"
+	local configContents: string?
+	if fs.exists(configPath) then
+		configContents = fs.readFileToString(configPath)
+	else
+		print("failed to get template changeset config, using default config instead (consider resolving this)")
+	end
 
-pcall(fs.remove, "LICENSE")
-print("removed LICENSE, remember to create a new one!")
+	pcall(fs.removeDirectory, ".changeset", { recursive = true })
+	process.run({ "changeset", "init" }, { stdio = "inherit" })
+
+	if configContents ~= nil then
+		fs.writeStringToFile(configPath, configContents)
+	end
+end
+
+do -- LICENSE
+	pcall(fs.remove, "LICENSE")
+	print("removed LICENSE, remember to create a new one!")
+end
 
 pcall(fs.remove, "pesde.lock")
 pcall(fs.remove, "pesde.toml")
