@@ -47,7 +47,7 @@ run = "lute setup"
 
 [tasks."lint:setup"]
 description = "Runs required setup for proper linting to work"
-depends = ["lute:setup", "install_dependencies"]
+depends = ["lute:setup", "package:install"]
 
 [tasks."lint:luau-lsp"]
 hide = true
