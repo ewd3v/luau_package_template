@@ -24,3 +24,9 @@ When you merge this pr, the action workflow should also create a new GitHub rele
 ## @std linting
 
 This template also ships with [lute_std_lint](https://github.com/ewd3v/lute_std_lint#lute_std_lint) configured. It's purpose is to help you document what [standard libraries](https://lute.luau.org/std/) your package is using to help others know if it will run on their Luau runtime. You can find the config for it in [`src.config.luau`](/src.config.luau). However to make this more accessible to others you can also document your @std usage in your README.md like [shown here](https://github.com/ewd3v/lute_std_lint#required-libraries).
+
+## Monorepo
+
+A monorepo setup is nice when you work on multiple package that relate to eachother. Changesets natively supports this, and pesde has [workspaces](https://docs.pesde.dev/guides/workspaces/) to make working with multiple packages at the same time trivial.
+
+An exampe of a setup like this may be created in the future, however if want to make a setup yourself you'll need to update [`sync_project_version.luau`](/scripts/sync_package_version.luau) to sync all of your `package.json` files so your `pesde.toml` files stay in sync after changeset bumps the package versions.
