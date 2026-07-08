@@ -38,20 +38,28 @@ do -- LICENSE
 	print("removed LICENSE, remember to create a new one!")
 end
 
-pcall(fs.remove, "pesde.lock")
-pcall(fs.remove, "pesde.toml")
+do -- package
+	pcall(fs.remove, "pesde.lock")
+	pcall(fs.remove, "pesde.toml")
 
-process.run({ "pesde", "init" }, { stdio = "inherit" })
-local pesdeContents = fs.readFileToString("pesde.toml")
+	process.run({ "pesde", "init" }, { stdio = "inherit" })
+	local pesdeContents = fs.readFileToString("pesde.toml")
 
-local fullPackageName = assert(string.match(pesdeContents, 'name = "(.-)"'), "failed to find package name")
-local packageNameParts = string.split(fullPackageName, "/")
-local packageName = assert(packageNameParts[2], "failed to get package name")
+	local fullPackageName = assert(string.match(pesdeContents, 'name = "(.-)"'), "failed to find package name")
+	local packageNameParts = string.split(fullPackageName, "/")
+	local packageName = assert(packageNameParts[2], "failed to get package name")
 
-local packageDescription = string.match(pesdeContents, 'description = "(.-)"') or ""
+	local packageDescription = string.match(pesdeContents, 'description = "(.-)"') or ""
 
-fs.writeStringToFile("README.md", `# {packageName}\n{packageDescription}\n`)
-fs.writeStringToFile(
-	"package.json",
-	`\{\n    "name": "{fullPackageName}",\n    "version": "0.0.0",\n    "private": true\n}`
-)
+	fs.writeStringToFile("README.md", `# {packageName}\n{packageDescription}\n`)
+	fs.writeStringToFile(
+		"package.json",
+		`\{\n    "name": "{fullPackageName}",\n    "version": "0.0.0",\n    "private": true\n}`
+	)
+end
+
+do -- package dependencies
+	local settings: process.ProcessRunOptions = { stdio = "inherit" }
+	process.run({ "pesde", "add", "ewdev/lute_std_lint", "--dev", "--target", "luau" }, settings)
+	process.run({ "mise", "run", "package:update_lockfile" }, settings)
+end
