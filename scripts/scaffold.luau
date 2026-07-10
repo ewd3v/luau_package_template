@@ -33,6 +33,10 @@ do -- changeset
 	end
 end
 
+do -- CHANGELOG.md
+	pcall(fs.remove, "CHANGELOG.md")
+end
+
 do -- LICENSE
 	pcall(fs.remove, "LICENSE")
 	print("removed LICENSE, remember to create a new one!")
